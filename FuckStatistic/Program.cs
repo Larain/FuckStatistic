@@ -33,7 +33,7 @@ namespace FuckStatistic
             {
                 var game = new Game()
                 {
-                    ChangeChoise = toChangeOrNotToChange
+                    ChangeChoice = toChangeOrNotToChange
                 };
                 game.StartGame();
 
@@ -43,7 +43,7 @@ namespace FuckStatistic
             int won = games.Count(x => x.Result != null && x.Result.Value);
             int lose = games.Count(x => x.Result != null && !x.Result.Value);
 
-            string result = $"Computer changed choise = {toChangeOrNotToChange}";
+            string result = $"Computer changed choice = {toChangeOrNotToChange}";
             result += "\n";
             result += $"won: {won} times ({(won * 100 * 1.00 / times * 1.00).ToString("F")}%); ";
             result += $"lose: {lose} times ({(lose * 100 * 1.00 / times * 1.00).ToString("F")}%)";

@@ -14,7 +14,7 @@ namespace FuckStatistic.Model
             _map.PlacePrize();
         }
 
-        public bool ChangeChoise { get; set; }
+        public bool ChangeChoice { get; set; }
 
         public bool? Result
         {
@@ -36,18 +36,18 @@ namespace FuckStatistic.Model
             int firstPosition = RandomHelper.Rand(_map.Slots.Length);
             _map.ChooseSlot(firstPosition);
 
-            // Если меня меняем выбор
-            if (ChangeChoise)
+            // If strategy is to 'chagne choice'
+			if (ChangeChoice)
             {
-                // Показываем где плохой вариант
+                // Flash bad slot position
                 var badSlot = _map.Slots.First(x => !x.HasPrize && x.Position != firstPosition);
                 _map.ChooseSlot(badSlot.Position);
 
-                // Тогда выбираем слот которые не равен первому выбору и который нам показали
+                // Select slot that is not equal to the first choice and is not equal to shown bad slot
                 var selectedSlot = _map.Slots.First(x => x.Position != firstPosition && x.Position != badSlot.Position);
                 _map.OpenSlot(selectedSlot.Position);
             }
-            // Иначе просто открываем слот
+            // Otherwise open slot we choosed first time
             else
             {
                 _map.OpenSlot(firstPosition);
