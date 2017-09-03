@@ -40,8 +40,8 @@ namespace FuckStatistic.Model
             if (ChangeChoise)
             {
                 // Показываем где плохой вариант
-				var badSlot = _map.Slots.First(x => !x.HasPrize && x.Position != firstPosition);
-				_map.ChooseSlot(badSlot.Position);
+                var badSlot = _map.Slots.First(x => !x.HasPrize && x.Position != firstPosition);
+                _map.ChooseSlot(badSlot.Position);
 
                 // Тогда выбираем слот которые не равен первому выбору и который нам показали
                 var selectedSlot = _map.Slots.First(x => x.Position != firstPosition && x.Position != badSlot.Position);
