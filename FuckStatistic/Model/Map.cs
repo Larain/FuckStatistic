@@ -39,8 +39,7 @@ namespace FuckStatistic.Model
             if (Slots[position].IsPicked) throw new SlotIsAlreadyOpenedException();
             if (Slots.Any(x => x.IsPicked)) throw new GameFinishedException();
 
-
-			Slots[position].IsPicked = true;
+            Slots[position].IsPicked = true;
             Slots[position].PickOrder = _pickOrderCounter++;
 
             return Slots[position].HasPrize;
