@@ -24,7 +24,7 @@ namespace FuckStatistic.Model
                 {
                     return _map.Slots.First(x => x.IsPicked).HasPrize;
                 }
-                catch (NullReferenceException)
+                catch (InvalidOperationException)
                 {
                     return null;
                 }
