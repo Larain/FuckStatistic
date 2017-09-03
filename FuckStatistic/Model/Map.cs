@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+
 namespace FuckStatistic.Model
 {
     public class Map
@@ -35,8 +37,10 @@ namespace FuckStatistic.Model
         public bool OpenSlot(int position)
         {
             if (Slots[position].IsPicked) throw new SlotIsAlreadyOpenedException();
+            if (Slots.Any(x => x.IsPicked)) throw new GameFinishedException();
 
-            Slots[position].IsPicked = true;
+
+			Slots[position].IsPicked = true;
             Slots[position].PickOrder = _pickOrderCounter++;
 
             return Slots[position].HasPrize;
@@ -49,6 +53,7 @@ namespace FuckStatistic.Model
         public void ChooseSlot(int position)
         {
             if (Slots[position].IsPicked) throw new SlotIsAlreadyOpenedException();
+            if (Slots[position].PickOrder != 0) throw new SlotIsAlreadyOpenedException();
 
             Slots[position].PickOrder = _pickOrderCounter++;
 
