@@ -51,7 +51,6 @@ namespace FuckStatistic.Model
         /// <param name="position">Position of slot</param>
         public void ChooseSlot(int position)
         {
-            if (Slots[position].IsPicked) throw new SlotIsAlreadyOpenedException();
             if (Slots[position].PickOrder != 0) throw new SlotIsAlreadyOpenedException();
 
             Slots[position].PickOrder = _pickOrderCounter++;
