@@ -36,7 +36,7 @@ namespace FuckStatistic.Model
             int firstPosition = RandomHelper.Rand(_map.Slots.Length);
             _map.ChooseSlot(firstPosition);
 
-            // If strategy is to 'chagne choice'
+            // If strategy is 'to chagne choice'
             if (ChangeChoice)
             {
                 // Flash bad slot position
