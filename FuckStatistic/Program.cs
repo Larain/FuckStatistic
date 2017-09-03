@@ -9,7 +9,7 @@ namespace FuckStatistic
 {
     class Program
     {
-		static void Main(string[] args)
+        static void Main(string[] args)
         {
             List<Task> tasks = new List<Task>();
 
@@ -22,25 +22,26 @@ namespace FuckStatistic
             //Console.WriteLine(ConductExperiment(1000000, true));
             //Console.WriteLine(ConductExperiment(1000000, false));
 
-            Task.WaitAll(new[] {t1, t2});
+            Task.WaitAll(new[] { t1, t2 });
         }
 
-        public static string ConductExperiment(int times, bool toChangeOrNotToChange) {
-			Game[] games = new Game[times];
+        public static string ConductExperiment(int times, bool toChangeOrNotToChange)
+        {
+            Game[] games = new Game[times];
 
-			for (int i = 0; i < games.Length; i++)
-			{
+            for (int i = 0; i < games.Length; i++)
+            {
                 var game = new Game()
                 {
                     ChangeChoise = toChangeOrNotToChange
                 };
                 game.StartGame();
 
-				games[i] = game;
-			}
+                games[i] = game;
+            }
 
-			int won = games.Count(x => x.Result != null && x.Result.Value);
-			int lose = games.Count(x => x.Result != null && !x.Result.Value);
+            int won = games.Count(x => x.Result != null && x.Result.Value);
+            int lose = games.Count(x => x.Result != null && !x.Result.Value);
 
             string result = $"Computer changed choise = {toChangeOrNotToChange}";
             result += "\n";

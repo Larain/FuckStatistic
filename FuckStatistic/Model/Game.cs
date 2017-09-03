@@ -16,11 +16,18 @@ namespace FuckStatistic.Model
 
         public bool ChangeChoise { get; set; }
 
-        public bool? Result 
-        { 
-            get 
+        public bool? Result
+        {
+            get
             {
-                return _map.Slots.FirstOrDefault(x => x.IsPicked).HasPrize;
+                try
+                {
+                    return _map.Slots.First(x => x.IsPicked).HasPrize;
+                }
+                catch (NullReferenceException)
+                {
+                    return null;
+                }
             }
         }
 
@@ -48,7 +55,8 @@ namespace FuckStatistic.Model
             return _map;
         }
 
-        public override string ToString() {
+        public override string ToString()
+        {
             StringBuilder sb = new StringBuilder();
 
             foreach (var slot in _map.Slots)
