@@ -3,21 +3,37 @@ namespace FuckStatistic.Model
 {
     public class Map
     {
-        private int _pickOrderCounter;
+        private byte _pickOrderCounter;
 
         public Map()
         {
             Slots = new Slot[3];
+            _pickOrderCounter = 1;
         }
 
         public Slot[] Slots { get; private set; }
 
-        public void PlacePrize() {
-            int index = RandomHelper.Randomizer.Next(0, 2);
+        /// <summary>
+        /// Places the prize randomly.
+        /// </summary>
+        public void PlacePrize()
+        {
+            for (byte i = 0; i < Slots.Length; i++)
+            { 
+                Slots[i].Position = i; 
+            }
+
+            int index = RandomHelper.Rand(Slots.Length);
             Slots[index].HasPrize = true;
         }
 
-        public bool OpenSlot(int position) {
+		/// <summary>
+        /// Choose slot and open it (That action finish the game)
+		/// </summary>
+		/// <returns><c>true</c>, if slot had prize, <c>false</c> otherwise.</returns>
+		/// <param name="position">Position of slot</param>
+		public bool OpenSlot(int position)
+        {
             if (Slots[position].IsPicked) throw new SlotIsAlreadyOpenedException();
 
             Slots[position].IsPicked = true;
@@ -25,5 +41,16 @@ namespace FuckStatistic.Model
 
             return Slots[position].HasPrize;
         }
+
+        /// <summary>
+        /// Remeber that slot choosed was choosed
+        /// </summary>
+        /// <param name="position">Position of slot</param>
+        public void ChooseSlot(int position){
+			if (Slots[position].IsPicked) throw new SlotIsAlreadyOpenedException();
+
+			Slots[position].PickOrder = _pickOrderCounter++;
+
+		}
     }
 }
