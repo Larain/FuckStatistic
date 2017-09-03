@@ -45,7 +45,8 @@ namespace FuckStatistic
 
             string result = $"Computer changed choise = {toChangeOrNotToChange}";
             result += "\n";
-            result += $"won: {won} times ({(won * 100 * 1.00 / times * 1.00).ToString("F")}%); lose: {lose} times ({(lose * 100 * 1.00 / times * 1.00).ToString("F")}%)";
+            result += $"won: {won} times ({(won * 100 * 1.00 / times * 1.00).ToString("F")}%); ";
+            result += $"lose: {lose} times ({(lose * 100 * 1.00 / times * 1.00).ToString("F")}%)";
 
             return result;
         }
