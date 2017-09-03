@@ -19,20 +19,20 @@ namespace FuckStatistic.Model
         public void PlacePrize()
         {
             for (byte i = 0; i < Slots.Length; i++)
-            { 
-                Slots[i].Position = i; 
+            {
+                Slots[i].Position = i;
             }
 
             int index = RandomHelper.Rand(Slots.Length);
             Slots[index].HasPrize = true;
         }
 
-		/// <summary>
+        /// <summary>
         /// Choose slot and open it (That action finish the game)
-		/// </summary>
-		/// <returns><c>true</c>, if slot had prize, <c>false</c> otherwise.</returns>
-		/// <param name="position">Position of slot</param>
-		public bool OpenSlot(int position)
+        /// </summary>
+        /// <returns><c>true</c>, if slot had prize, <c>false</c> otherwise.</returns>
+        /// <param name="position">Position of slot</param>
+        public bool OpenSlot(int position)
         {
             if (Slots[position].IsPicked) throw new SlotIsAlreadyOpenedException();
 
@@ -46,11 +46,12 @@ namespace FuckStatistic.Model
         /// Remeber that slot choosed was choosed
         /// </summary>
         /// <param name="position">Position of slot</param>
-        public void ChooseSlot(int position){
-			if (Slots[position].IsPicked) throw new SlotIsAlreadyOpenedException();
+        public void ChooseSlot(int position)
+        {
+            if (Slots[position].IsPicked) throw new SlotIsAlreadyOpenedException();
 
-			Slots[position].PickOrder = _pickOrderCounter++;
+            Slots[position].PickOrder = _pickOrderCounter++;
 
-		}
+        }
     }
 }

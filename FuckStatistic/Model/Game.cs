@@ -37,7 +37,7 @@ namespace FuckStatistic.Model
             _map.ChooseSlot(firstPosition);
 
             // If strategy is to 'chagne choice'
-			if (ChangeChoice)
+            if (ChangeChoice)
             {
                 // Flash bad slot position
                 var badSlot = _map.Slots.First(x => !x.HasPrize && x.Position != firstPosition);
